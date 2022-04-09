@@ -25,9 +25,9 @@ class Snake:
         elif self.vector == self.DOWN_VECTOR:
             snake_head.top += PIXEL
 
-
     def increase(self):
-        pass
+        self.body.append(self.body[-1].copy())
+
 
     def draw(self):
         pass
