@@ -8,9 +8,10 @@ class Snake:
     UP_VECTOR = 3
     DOWN_VECTOR = 4
 
-    def __init__(self):
+    def __init__(self, color):
         self.body = [pg.Rect((WIGHT / 2, HEIGHT / 2), PIXEL, PIXEL)]
         self.vector = self.RIGHT_VECTOR
+        self.color = color
 
     def move(self):
         snake_head = self.body[0].copy()
@@ -28,7 +29,8 @@ class Snake:
     def increase(self):
         self.body.append(self.body[-1].copy())
 
+    def draw(self, surface):
+        for rect in self.body:
+            pg.draw.rect(surface, self.color, rect)
 
-    def draw(self):
-        pass
 
