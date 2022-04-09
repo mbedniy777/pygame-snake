@@ -25,8 +25,6 @@ class Snake:
         elif self.vector == self.DOWN_VECTOR:
             snake_head.top += PIXEL
 
-    def change_vector(self):
-        pass
 
     def increase(self):
         pass
