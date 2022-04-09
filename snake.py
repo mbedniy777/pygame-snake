@@ -1,5 +1,5 @@
 import pygame as pg
-from settings import PIXEL, WIGHT, HEIGHT
+from settings import PIXEL, WIDTH, HEIGHT
 
 
 class Snake:
@@ -9,7 +9,7 @@ class Snake:
     DOWN_VECTOR = 4
 
     def __init__(self, color):
-        self.body = [pg.Rect((WIGHT / 2, HEIGHT / 2), PIXEL, PIXEL)]
+        self.body = [pg.Rect((WIDTH / 2, HEIGHT / 2), PIXEL, PIXEL)]
         self.vector = self.RIGHT_VECTOR
         self.color = color
 

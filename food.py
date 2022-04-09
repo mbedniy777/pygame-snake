@@ -1,7 +1,7 @@
 from random import randrange
 
 import pygame as pg
-from settings import PIXEL, WIGHT, HEIGHT
+from settings import PIXEL, WIDTH, HEIGHT
 
 
 class Food(pg.Rect):
@@ -13,5 +13,5 @@ class Food(pg.Rect):
         pg.draw.rect(surface, self.color, self)
 
     def set_random_cords(self):
-        self.left = randrange(0, WIGHT, PIXEL)
+        self.left = randrange(0, WIDTH, PIXEL)
         self.top = randrange(0, HEIGHT, PIXEL)
