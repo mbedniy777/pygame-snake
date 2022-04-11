@@ -20,6 +20,8 @@ class Manager:
             self.draw_objects()
             self.move_objects()
             self.process_events()
+            self.process_collision_objects()
+            self.process_keyboard_events()
             self.process_collision_objects_with_border()
 
     def process_collision_objects_with_border(self):
@@ -48,13 +50,24 @@ class Manager:
                 self.is_running = False
 
     def process_collision_objects(self):
-        snake_head = self.snake.body[1:]
+        snake_head = self.snake.body[0]
+        for rect in self.snake.body[1:]:
+            if snake_head.center == rect.center:
+                self.is_running = False
         if snake_head.center == self.food.center:
+            self.snake.increase()
             self.food.set_random_cords()
-
-        if snake_head.center == self.snake.body.center:
-            self.is_running = False
 
     def move_objects(self):
         self.snake.move()
 
+    def process_keyboard_events(self):
+        keys = pg.key.get_pressed()
+        if keys[pg.K_UP] and self.snake.vector != self.snake.DOWN_VECTOR:
+            self.snake.vector = self.snake.UP_VECTOR
+        if keys[pg.K_DOWN] and self.snake.vector != self.snake.UP_VECTOR:
+            self.snake.vector = self.snake.DOWN_VECTOR
+        if keys[pg.K_LEFT] and self.snake.vector != self.snake.RIGHT_VECTOR:
+            self.snake.vector = self.snake.LEFT_VECTOR
+        if keys[pg.K_RIGHT] and self.snake.vector != self.snake.LEFT_VECTOR:
+            self.snake.vector = self.snake.RIGHT_VECTOR

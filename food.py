@@ -8,6 +8,7 @@ class Food(pg.Rect):
     def __init__(self, color):
         self.color = color
         super().__init__(0, 0, PIXEL, PIXEL)
+        self.set_random_cords()
 
     def draw(self, surface):
         pg.draw.rect(surface, self.color, self)
